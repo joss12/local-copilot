@@ -1,0 +1,69 @@
+{
+  "name": "local-copilot",
+  "displayName": "Local Copilot",
+  "description": "Offline code completion powered by your own codebase",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "local-copilot.indexWorkspace",
+        "title": "Local Copilot: Index Workspace"
+      },
+      {
+        "command": "local-copilot.startBackend",
+        "title": "Local Copilot: Start Backend"
+      },
+      {
+        "command": "local-copilot.stopBackend",
+        "title": "Local Copilot: Stop Backend"
+      }
+    ],
+    "configuration": {
+      "title": "Local Copilot",
+      "properties": {
+        "localCopilot.backendPort": {
+          "type": "number",
+          "default": 8080,
+          "description": "Port for the Local Copilot backend server"
+        },
+        "localCopilot.backendPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the copilot backend binary (leave empty for auto-detect)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "@types/vscode": "^1.109.0",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.13.5"
+  }
+}
